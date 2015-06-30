@@ -42,6 +42,9 @@ public class Matrix {
 			for(int j = 0; j < res.m; j++){
 				res.arr[i][j] = BigInteger.ZERO;
 				for(int k = 0; k < m; k++){
+					BigInteger buffer = arr[i][k].multiply(obj.arr[k][j]);
+					BigInteger buffer1 = buffer.add(res.arr[i][j]);
+					buffer1.mod(module);
 					res.arr[i][j] = res.arr[i][j].add(arr[i][k].multiply(obj.arr[k][j])).mod(module);
 				}
 			}
