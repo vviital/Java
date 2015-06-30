@@ -1,0 +1,48 @@
+import java.math.BigInteger;
+
+
+public class Matrix {
+	
+	public BigInteger[][] arr;	
+	public BigInteger module;
+	
+	public int n;
+	public int m;
+	
+	
+	public Matrix(){
+		
+	}
+	
+	public Matrix(int n, int m){
+		arr = new BigInteger[n][m];
+		this.n = n;
+		this.m = m;
+		for(int i = 0; i < Math.min(n,  m); i++)
+			arr[i][i] = BigInteger.ONE;
+	}
+	
+	public Matrix(Matrix source){
+		this.n = source.n;
+		this.m = source.m;
+		this.arr = source.arr;
+	}
+	
+	public Matrix multiply(Matrix obj){
+		Matrix res = new Matrix(n, obj.m);
+		for(int i = 0; i < res.n; i++)
+			for(int j = 0; j < res.m; j++){
+				res.arr[i][j] = BigInteger.ZERO;
+				for(int k = 0; k < m; j++){
+					res.arr[i][j] = res.arr[i][j].add(arr[i][k].multiply(obj.arr[k][i])).mod(module);
+				}
+			}
+		return res;
+	}
+	
+	public Matrix pow(BigInteger p){
+		Matrix mul = this;
+		Matrix res = new Matrix(this.n, this.m);
+		return res;
+	}
+}

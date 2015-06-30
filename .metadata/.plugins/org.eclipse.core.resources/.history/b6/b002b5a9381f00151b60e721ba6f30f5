@@ -1,0 +1,7 @@
+import java.math.BigInteger;
+
+public class Fibonacci {
+	public static BigInteger Calculate(BigInteger n, BigInteger module){
+		return new BigInteger("1");
+	}
+}
